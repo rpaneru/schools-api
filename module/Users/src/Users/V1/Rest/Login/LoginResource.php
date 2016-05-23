@@ -6,10 +6,12 @@ use ZF\Rest\AbstractResourceListener;
 
 class LoginResource extends AbstractResourceListener
 {
+    protected $adapter;
     protected $loginMapper;
     
-    public function __construct($loginMapper)
+    public function __construct($adapter,$loginMapper)
     {
+        $this->adapter = $adapter;
         $this->loginMapper = $loginMapper;
     }
     
