@@ -2,7 +2,7 @@
 return array(
     'db' => array(
         'adapters' => array(
-            'zf2AppDbAdapter' => array(),
+            'schoolsDbAdapter' => array(),
         ),
     ),
     'router' => array(
@@ -19,8 +19,8 @@ return array(
     'zf-mvc-auth' => array(
         'authentication' => array(
             'map' => array(
-                'users\\V1' => 'zf2appdbadapter',
-                'Users\\V1' => 'zf2appdbadapter',
+                'users\\V1' => 'schoolsdbadapter',
+                'Users\\V1' => 'schoolsdbadapter',
             ),
         ),
     ),
