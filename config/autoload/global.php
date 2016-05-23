@@ -16,4 +16,12 @@ return array(
             ),
         ),
     ),
+    'zf-mvc-auth' => array(
+        'authentication' => array(
+            'map' => array(
+                'users\\V1' => 'zf2appdbadapter',
+                'Users\\V1' => 'zf2appdbadapter',
+            ),
+        ),
+    ),
 );

@@ -22,5 +22,4 @@ return array(
     'ZF\\Rpc',
     'ZF\\Versioning',
     'ZF\\Apigility\\Documentation\\Swagger',
-    'Users',
 );
