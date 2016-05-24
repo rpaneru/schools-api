@@ -20,4 +20,17 @@ class Module implements ApigilityProviderInterface
             ),
         );
     }
+    
+    public function getServiceConfig()
+    {
+      return array(
+            'factories' => array(
+                'Users\V1\Rest\Login\LoginMapper' =>  function ($sm) {
+                    $adapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new \Users\V1\Rest\Login\LoginMapper($adapter);
+                }
+            )
+        );
+    }
+    
 }

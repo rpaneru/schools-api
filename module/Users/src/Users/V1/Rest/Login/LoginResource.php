@@ -15,11 +15,9 @@ class LoginResource extends AbstractResourceListener
         $this->loginMapper = $loginMapper;
     }
     
-    public function fetch($userId,$password,$profileTypeId)
+    public function fetch($userId)
     {
-        echo $userId;
-        echo $password;
-        echo $profileTypeId;
+        var_dump($userId);
         die;
         return new ApiProblem(405, 'The GET method has not been defined for individual resources');
     }

@@ -10,7 +10,7 @@ return array(
             'users.rest.login' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/login[/:userId][/:password][/:profileTypeId]',
+                    'route' => '/login[/:login_id]',
                     'defaults' => array(
                         'controller' => 'Users\\V1\\Rest\\Login\\Controller',
                     ),
@@ -22,13 +22,12 @@ return array(
         'uri' => array(
             0 => 'users.rest.login',
         ),
-        'default_version' => 1,
     ),
     'zf-rest' => array(
         'Users\\V1\\Rest\\Login\\Controller' => array(
             'listener' => 'Users\\V1\\Rest\\Login\\LoginResource',
             'route_name' => 'users.rest.login',
-            'route_identifier_name' => 'userId',
+            'route_identifier_name' => 'login_id',
             'collection_name' => 'login',
             'entity_http_methods' => array(
                 0 => 'GET',
@@ -65,13 +64,13 @@ return array(
             'Users\\V1\\Rest\\Login\\LoginEntity' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'users.rest.login',
-                'route_identifier_name' => 'userId',
+                'route_identifier_name' => 'login_id',
                 'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
             ),
             'Users\\V1\\Rest\\Login\\LoginCollection' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'users.rest.login',
-                'route_identifier_name' => 'userId',
+                'route_identifier_name' => 'login_id',
                 'is_collection' => true,
             ),
         ),
@@ -82,26 +81,7 @@ return array(
         ),
     ),
     'input_filter_specs' => array(
-        'Users\\V1\\Rest\\Login\\Validator' => array(
-            0 => array(
-                'required' => false,
-                'validators' => array(),
-                'filters' => array(),
-                'name' => 'userId',
-            ),
-            1 => array(
-                'required' => false,
-                'validators' => array(),
-                'filters' => array(),
-                'name' => 'password',
-            ),
-            2 => array(
-                'required' => false,
-                'validators' => array(),
-                'filters' => array(),
-                'name' => 'profileTypeId',
-            ),
-        ),
+        'Users\\V1\\Rest\\Login\\Validator' => array(),
     ),
     'zf-mvc-auth' => array(
         'authorization' => array(
