@@ -22,45 +22,33 @@ class LoginResource extends AbstractResourceListener
         
         if( json_last_error() == JSON_ERROR_NONE )
         {
+            
             $paramsSupportedArray = array("userId","password","profileTypeId","hash");
-        
-            ////////////////////////////////////////////////////////////////////////////////////////
-            $paramsUnsupportedArray = array();            
-            foreach($paramObject as $key => $val)
-            {
-                if( !in_array($key, $paramsSupportedArray) ) 
-                {
-                    array_push($paramsUnsupportedArray, $key);
-                }
-            }
-            if( count($paramsUnsupportedArray)>0 )
-            {
-                return new ApiProblem(201, implode(', ', $paramsUnsupportedArray).' not supported.');
-            }
-            ////////////////////////////////////////////////////////////////////////////////////////
+
+            ////////////////////////////////////////////////////////////////////////////////////
+            $secObj = new \Security( );
             
-            $arrayNotPresent = array();
-            foreach($paramsSupportedArray as $key => $val)
-            {                       
-                if( !array_key_exists($val, $paramArray ) )
-                {
-                    array_push( $arrayNotPresent ,$val );
-                }
-            }
-            if(count($arrayNotPresent) >0)
+            $errorMessage = $secObj->checkUnsupportedFields($paramObject, $paramsSupportedArray);
+            if( isset($errorMessage) )
             {
-                return new ApiProblem(201, implode(', ',$arrayNotPresent) .' not entered.');
+                return new ApiProblem(201, $errorMessage);
             }
-            ////////////////////////////////////////////////////////////////////////////////////////        
-            
-            $secObj = new \Security();
+
+            $errorMessage = $secObj->checkMissingFields($paramArray, $paramsSupportedArray);
+            if( isset($errorMessage) )
+            {
+                return new ApiProblem(201, $errorMessage);
+            }
+
             $newHash = $secObj->generateAndMatchHash($paramObject); 
+            
             $ret = $secObj->checkCompulsion();
             if( $newHash != $paramObject->hash && $ret == 'Yes' )
             {
                 return new ApiProblem(201, 'Hash not matched.');
             }
-            
+            ////////////////////////////////////////////////////////////////////////////////////
+
             $userDetails = $this->loginMapper->fetchOne( $paramObject );
             var_dump($userDetails);die;
         }

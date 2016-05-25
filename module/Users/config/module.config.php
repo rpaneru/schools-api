@@ -2,7 +2,7 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'LoginResource' => 'Users\\V1\\Rest\\Login\\LoginResourceFactory',
+            'Users\\V1\\Rest\\Login\\LoginResource' => 'Users\\V1\\Rest\\Login\\LoginResourceFactory',
         ),
     ),
     'router' => array(
@@ -61,10 +61,10 @@ return array(
     ),
     'zf-hal' => array(
         'metadata_map' => array(
-            'Users\\V1\\Rest\\Login\\LoginEntity' => array(
+            'Users\\V1\\Rest\\Login\\UserDetailsEntity' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'users.rest.login',
-                'route_identifier_name' => 'login_id',
+                'route_identifier_name' => 'route_login',
                 'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
             ),
             'Users\\V1\\Rest\\Login\\LoginCollection' => array(
@@ -72,12 +72,6 @@ return array(
                 'route_name' => 'users.rest.login',
                 'route_identifier_name' => 'route_login',
                 'is_collection' => true,
-            ),
-            'Users\\V1\\Rest\\Login\\UserDetailsEntity' => array(
-                'entity_identifier_name' => 'id',
-                'route_name' => 'users.rest.login',
-                'route_identifier_name' => 'route_login',
-                'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
             ),
         ),
     ),

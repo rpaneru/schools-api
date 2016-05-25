@@ -1,8 +1,17 @@
 <?php
 return array(
     'db' => array(
+        'driver' => 'Pdo',
+        'dsn' => 'mysql:dbname=schools;host=localhost',
+        'username' => 'root',
+        'password' => '',
         'adapters' => array(
-            'schoolsDbAdapter' => array(),
+            'schools_adapter' => array(),
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\\Db\\Adapter\\Adapter' => 'Zend\\Db\\Adapter\\AdapterServiceFactory',
         ),
     ),
     'router' => array(
@@ -19,8 +28,7 @@ return array(
     'zf-mvc-auth' => array(
         'authentication' => array(
             'map' => array(
-                'users\\V1' => 'schoolsdbadapter',
-                'Users\\V1' => 'schoolsdbadapter',
+                'Users\\V1' => 'schools_oauth',
             ),
         ),
     ),

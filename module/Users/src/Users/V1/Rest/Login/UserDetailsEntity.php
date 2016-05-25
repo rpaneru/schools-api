@@ -23,7 +23,7 @@ class UserDetailsEntity
     public $status;
     public $sessionId;
     public $createdBy;
-    public $createDateTime;
+    public $createdDateTime;
 
     public function getArrayCopy()
     {
@@ -74,5 +74,6 @@ class UserDetailsEntity
         $this->status = $array['status'];
         $this->sessionId = $array['sessionId'];
         $this->createdBy = $array['createdBy'];        
+        $this->createdDateTime = $array['createdDateTime'];
     }
 }

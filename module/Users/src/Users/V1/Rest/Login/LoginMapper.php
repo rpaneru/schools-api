@@ -14,25 +14,20 @@ class LoginMapper
     {
         $this->adapter = $adapter;
     }
- 
-    public function getAdapter()
-    {
-       return $this->adapter;
-    }
     
     public function fetchOne($data)
     { 
-        $sql = " SELECT * FROM `users` where `userid` = ? and `password` = ? and `profileTypeId` = ? ";
+        $sql = " SELECT * FROM `user_details` where `userid` = ? and `password` = ? and `profileTypeId` = ? ";
         $resultset = $this->adapter->query($sql, array($data->userId,$data->password,$data->profileTypeId));
         $result = $resultset->toArray();
-        return $result;
-        /*if (!$result) 
+        
+        if (!$result) 
         {
             return false;
         }
 
         $entity = new UserDetailsEntity();
         $entity->exchangeArray($result[0]);
-        return $entity;  */           
+        return $entity;       
     }
 }
