@@ -14,18 +14,17 @@ class LoginMapper
     {
         $this->adapter = $adapter;
     }
- 
-    public function getAdapter()
-    {
-       return $this->adapter;
-    }
     
     public function fetchOne($data)
     { 
+        var_dump($data);
+        die;
+        
         $sql = " SELECT * FROM `users` where `userid` = ? and `password` = ? and `profileTypeId` = ? ";
         $resultset = $this->adapter->query($sql, array($data->userId,$data->password,$data->profileTypeId));
         $result = $resultset->toArray();
         return $result;
+        
         /*if (!$result) 
         {
             return false;
