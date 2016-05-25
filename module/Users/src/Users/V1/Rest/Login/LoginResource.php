@@ -50,7 +50,18 @@ class LoginResource extends AbstractResourceListener
             ////////////////////////////////////////////////////////////////////////////////////
 
             $userDetails = $this->loginMapper->fetchOne( $paramObject );
-            var_dump($userDetails);die;
+            
+            if($userDetails->verified == 'No')
+            {
+                return new ApiProblem(201, "User's mobile number is not verified.");
+            }
+            
+            if($userDetails->status == 'Inactive')
+            {
+                return new ApiProblem(201, "User is deleted.");
+            }
+            
+            return $userDetails;
         }
         else
         {
