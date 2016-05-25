@@ -15,10 +15,58 @@ class LoginResource extends AbstractResourceListener
         $this->loginMapper = $loginMapper;
     }
     
-    public function fetch($userId)
+    public function fetch($param)
     {
-        var_dump($userId);
-        die;
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        $paramObject = json_decode($param);
+        $paramArray = (array)$paramObject;
+        
+        if( json_last_error() == JSON_ERROR_NONE )
+        {
+            $paramsSupportedArray = array("userId","password","profileTypeId","hash");
+        
+            ////////////////////////////////////////////////////////////////////////////////////////
+            $paramsUnsupportedArray = array();            
+            foreach($paramObject as $key => $val)
+            {
+                if( !in_array($key, $paramsSupportedArray) ) 
+                {
+                    array_push($paramsUnsupportedArray, $key);
+                }
+            }
+            if( count($paramsUnsupportedArray)>0 )
+            {
+                return new ApiProblem(201, implode(', ', $paramsUnsupportedArray).' not supported.');
+            }
+            ////////////////////////////////////////////////////////////////////////////////////////
+            
+            $arrayNotPresent = array();
+            foreach($paramsSupportedArray as $key => $val)
+            {                       
+                if( !array_key_exists($val, $paramArray ) )
+                {
+                    array_push( $arrayNotPresent ,$val );
+                }
+            }
+            if(count($arrayNotPresent) >0)
+            {
+                return new ApiProblem(201, implode(', ',$arrayNotPresent) .' not entered.');
+            }
+            ////////////////////////////////////////////////////////////////////////////////////////        
+            
+            $secObj = new \Security();
+            $newHash = $secObj->generateAndMatchHash($paramObject); 
+            $ret = $secObj->checkCompulsion();
+            if( $newHash != $paramObject->hash && $ret == 'Yes' )
+            {
+                return new ApiProblem(201, 'Hash not matched.');
+            }
+            
+            $userDetails = $this->loginMapper->fetchOne( $paramObject );
+            var_dump($userDetails);die;
+        }
+        else
+        {
+           return new ApiProblem(201, 'Invalid format input.');
+        }
     }
 }

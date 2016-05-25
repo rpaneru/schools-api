@@ -20,18 +20,19 @@ class LoginMapper
        return $this->adapter;
     }
     
-    public function fetchOne($userId)
+    public function fetchOne($data)
     { 
-        $sql = 'SELECT * FROM users WHERE userId = ?';
-        $resultset = $this->adapter->query($sql, array($userId));
-        $data = $resultset->toArray();
-        if (!$data) 
+        $sql = " SELECT * FROM `users` where `userid` = ? and `password` = ? and `profileTypeId` = ? ";
+        $resultset = $this->adapter->query($sql, array($data->userId,$data->password,$data->profileTypeId));
+        $result = $resultset->toArray();
+        return $result;
+        /*if (!$result) 
         {
             return false;
         }
 
-        $entity = new LoginEntity();
-        $entity->exchangeArray($data[0]);
-        return $entity;             
+        $entity = new UserDetailsEntity();
+        $entity->exchangeArray($result[0]);
+        return $entity;  */           
     }
 }

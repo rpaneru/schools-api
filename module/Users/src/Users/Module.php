@@ -18,6 +18,9 @@ class Module implements ApigilityProviderInterface
                     __NAMESPACE__ => __DIR__,
                 ),
             ),
+            
+            'Zend\Loader\ClassMapAutoloader' => array(
+            __DIR__ . '/autoload_classmap.php'),           
         );
     }
     

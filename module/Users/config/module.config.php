@@ -2,7 +2,7 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'Users\\V1\\Rest\\Login\\LoginResource' => 'Users\\V1\\Rest\\Login\\LoginResourceFactory',
+            'LoginResource' => 'Users\\V1\\Rest\\Login\\LoginResourceFactory',
         ),
     ),
     'router' => array(
@@ -10,7 +10,7 @@ return array(
             'users.rest.login' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/login[/:login_id]',
+                    'route' => '/login[/:json_params]',
                     'defaults' => array(
                         'controller' => 'Users\\V1\\Rest\\Login\\Controller',
                     ),
@@ -27,7 +27,7 @@ return array(
         'Users\\V1\\Rest\\Login\\Controller' => array(
             'listener' => 'Users\\V1\\Rest\\Login\\LoginResource',
             'route_name' => 'users.rest.login',
-            'route_identifier_name' => 'login_id',
+            'route_identifier_name' => 'json_params',
             'collection_name' => 'login',
             'entity_http_methods' => array(
                 0 => 'GET',
@@ -36,7 +36,7 @@ return array(
             'collection_query_whitelist' => array(),
             'page_size' => 25,
             'page_size_param' => null,
-            'entity_class' => 'Users\\V1\\Rest\\Login\\LoginEntity',
+            'entity_class' => 'Users\\V1\\Rest\\Login\\UserDetailsEntity',
             'collection_class' => 'Users\\V1\\Rest\\Login\\LoginCollection',
             'service_name' => 'Login',
         ),
@@ -70,8 +70,14 @@ return array(
             'Users\\V1\\Rest\\Login\\LoginCollection' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'users.rest.login',
-                'route_identifier_name' => 'login_id',
+                'route_identifier_name' => 'route_login',
                 'is_collection' => true,
+            ),
+            'Users\\V1\\Rest\\Login\\UserDetailsEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'users.rest.login',
+                'route_identifier_name' => 'route_login',
+                'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
             ),
         ),
     ),
@@ -94,7 +100,7 @@ return array(
                     'DELETE' => false,
                 ),
                 'entity' => array(
-                    'GET' => true,
+                    'GET' => false,
                     'POST' => false,
                     'PUT' => false,
                     'PATCH' => false,

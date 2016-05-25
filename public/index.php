@@ -1,13 +1,8 @@
 <?php // @codingStandardsIgnoreFile
-/**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
- */
+/*ini_set("display_errors", "1");
+error_reporting(E_ALL);*/
+error_reporting(1);
 
-/**
- * This makes our life easier when dealing with paths. Everything is relative
- * to the application root now.
- */
 chdir(dirname(__DIR__));
 
 // Decline static file requests back to the PHP built-in webserver

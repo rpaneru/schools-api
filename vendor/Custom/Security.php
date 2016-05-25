@@ -1,8 +1,7 @@
 <?php
-class Security 
-{
+class Security {
     public static $secKey = '59c84ab';
-    public static $compulsion = 'No';    
+    public static $compulsion = 'Yes';    
     
     public function generateAndMatchHash($data)    
     {	        
