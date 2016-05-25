@@ -7,8 +7,6 @@ class LoginResourceFactory
     {
         $adapter = $services->get('Zend\Db\Adapter\Adapter');
         $loginMapper = $services->get('Users\V1\Rest\Login\LoginMapper'); 
-        var_dump($adapter);
-        var_dump($loginMapper);die;
         
         return new LoginResource($adapter,$loginMapper);
     }
