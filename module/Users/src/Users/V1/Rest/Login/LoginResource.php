@@ -62,6 +62,26 @@ class LoginResource extends AbstractResourceListener
             }
             
             return $userDetails;
+            
+            /*$mail = new \Email();           
+            $body = '<strong>Hello123</strong>';
+            $mail->SetFrom('rpaneru1986@gmail.com', 'SRTechnologies');
+            $mail->Subject    = "Test Subject";
+            $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
+            $mail->MsgHTML($body);
+            $mail->AddAddress("rajeshpaneru@myworkforce.org", "Rajesh Paneru");
+           
+            if(!$mail->Send()) 
+            {
+              echo "Mailer not sent";
+            } 
+            else 
+            {
+              echo "Message sent!";
+            }*/
+    
+            
+
         }
         else
         {

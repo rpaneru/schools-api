@@ -1,4 +1,5 @@
 <?php
 return array(
-    'Security' => 'vendor/Custom/Security.php'
+    'Security' => 'vendor/Custom/Security.php',
+    'Email' => 'vendor/Custom/Email.php'
 );
