@@ -61,7 +61,7 @@ class LoginResource extends AbstractResourceListener
                 return new ApiProblem(201, "User is deleted.");
             }
 
-            $mail = new \Email();                                   
+            /*$mail = new \Email();                                   
             $mail->From = 'rpaneru1986@gmail.com';
             $mail->FromName = 'SRTechnologies';
             $mail->addAddress('rajeshpaneru@myworkforce.org');
@@ -78,9 +78,9 @@ class LoginResource extends AbstractResourceListener
             else 
             {
                 return 'Message has been sent';
-            }
+            }*/
             
-            //return $userDetails;
+            return $userDetails;
 
         }
         else
