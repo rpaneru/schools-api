@@ -60,27 +60,27 @@ class LoginResource extends AbstractResourceListener
             {
                 return new ApiProblem(201, "User is deleted.");
             }
-            
-            return $userDetails;
-            
-            /*$mail = new \Email();           
-            $body = '<strong>Hello123</strong>';
-            $mail->SetFrom('rpaneru1986@gmail.com', 'SRTechnologies');
-            $mail->Subject    = "Test Subject";
-            $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
-            $mail->MsgHTML($body);
-            $mail->AddAddress("rajeshpaneru@myworkforce.org", "Rajesh Paneru");
-           
-            if(!$mail->Send()) 
+
+            $mail = new \Email();                                   
+            $mail->From = 'rpaneru1986@gmail.com';
+            $mail->FromName = 'SRTechnologies';
+            $mail->addAddress('rajeshpaneru@myworkforce.org');
+            $mail->WordWrap = 50;
+            $mail->Subject = 'Test Email Subject';
+            $mail->Body    = 'Test Email Body.';
+            $mail->AddAttachment("/var/www/html/demo-api/public/img/ag-hero.png");
+
+            if(!$mail->send()) 
             {
-              echo "Mailer not sent";
+                return 'Message could not be sent.';
+                //return 'Mailer Error: ' . $mail->ErrorInfo;
             } 
             else 
             {
-              echo "Message sent!";
-            }*/
-    
+                return 'Message has been sent';
+            }
             
+            //return $userDetails;
 
         }
         else
