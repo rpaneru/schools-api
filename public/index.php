@@ -3,6 +3,9 @@
 error_reporting(E_ALL);*/
 //error_reporting(1);
 
+
+ date_default_timezone_set('Asia/Kolkata'); 
+
 chdir(dirname(__DIR__));
 
 // Decline static file requests back to the PHP built-in webserver
