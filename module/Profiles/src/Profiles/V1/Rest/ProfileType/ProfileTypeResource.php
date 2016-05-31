@@ -22,6 +22,6 @@ class ProfileTypeResource extends AbstractResourceListener
 
     public function fetchAll($params = array())
     {        
-        return $this->profileTypeMapper->fetchAll();
+        return $this->profileTypeMapper->fetchAll($params);
     }
 }

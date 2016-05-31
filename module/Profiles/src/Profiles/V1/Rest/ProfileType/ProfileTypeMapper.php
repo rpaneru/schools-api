@@ -15,7 +15,7 @@ class ProfileTypeMapper
         $this->adapter = $adapter;
     }
     
-    public function fetchAll()
+    public function fetchAll($params)
     {
         $select = new Select('profile_types');
         $paginatorAdapter = new DbSelect($select, $this->adapter);

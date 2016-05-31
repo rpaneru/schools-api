@@ -77,4 +77,32 @@ return array(
             ),
         ),
     ),
+    'zf-mvc-auth' => array(
+        'authorization' => array(
+            'Profiles\\V1\\Rest\\ProfileType\\Controller' => array(
+                'collection' => array(
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+                'entity' => array(
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+            ),
+        ),
+    ),
+    'zf-content-validation' => array(
+        'Profiles\\V1\\Rest\\ProfileType\\Controller' => array(
+            'input_filter' => 'Profiles\\V1\\Rest\\ProfileType\\Validator',
+        ),
+    ),
+    'input_filter_specs' => array(
+        'Profiles\\V1\\Rest\\ProfileType\\Validator' => array(),
+    ),
 );

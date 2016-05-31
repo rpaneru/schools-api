@@ -6,7 +6,7 @@ class ProfileTypeResourceFactory
     public function __invoke($services)
     {
         $adapter = $services->get('Zend\Db\Adapter\Adapter');
-        $profileTypeMapper = $services->get('Profiles\V1\Rest\ProfileTypeMapper'); 
+        $profileTypeMapper = $services->get('Profiles\V1\Rest\ProfileType\ProfileTypeMapper');
         
         return new ProfileTypeResource($adapter,$profileTypeMapper);
     }
