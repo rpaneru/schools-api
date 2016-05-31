@@ -23,4 +23,5 @@ return array(
     'ZF\\Versioning',
     'ZF\\Apigility\\Documentation\\Swagger',
     'Users',
+    'Profiles',
 );
