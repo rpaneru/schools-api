@@ -9,5 +9,3 @@ nbproject
 data/cache/*
 !data/cache/.gitkeep
 .vagrant
-vendor
-composer.phar

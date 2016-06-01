@@ -9,7 +9,3 @@ nbproject
 data/cache/*
 !data/cache/.gitkeep
 .vagrant
-vendor
-composer.phar
-config/autoload/global.php
-config/autoload/local.php
