@@ -42,7 +42,7 @@ class CouchbaseDB implements AuthorizationCodeInterface,
             'access_token_table' => 'oauth_access_tokens',
             'refresh_token_table' => 'oauth_refresh_tokens',
             'code_table' => 'oauth_authorization_codes',
-            'user_table' => 'oauth_users',
+            'user_table' => 'user_details',
             'jwt_table' => 'oauth_jwt',
         ), $config);
     }

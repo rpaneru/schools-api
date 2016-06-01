@@ -58,7 +58,7 @@ CREATE TABLE oauth_scopes
   is_default smallint
 );
 
-CREATE TABLE oauth_users
+CREATE TABLE user_details
 (
   username character varying(255) NOT NULL,
   password character varying(2000),

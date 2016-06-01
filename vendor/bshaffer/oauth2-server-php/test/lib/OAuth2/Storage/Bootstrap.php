@@ -295,7 +295,7 @@ class Bootstrap
         $cf->insert("oauth_public_keys:ClientID_Two", array('__data' => json_encode(array("public_key" => "client_2_public", "private_key" => "client_2_private", "encryption_algorithm" => "RS256"))));
         $cf->insert("oauth_public_keys:", array('__data' => json_encode(array("public_key" => $this->getTestPublicKey(), "private_key" =>  $this->getTestPrivateKey(), "encryption_algorithm" => "RS256"))));
 
-        $cf->insert("oauth_users:testuser", array('__data' =>json_encode(array("password" => "password", "email" => "testuser@test.com", "email_verified" => true))));
+        $cf->insert("user_details:testuser", array('__data' =>json_encode(array("password" => "password", "email" => "testuser@test.com", "email_verified" => true))));
 
     }
 
@@ -377,7 +377,7 @@ class Bootstrap
         $sql = 'INSERT INTO oauth_authorization_codes (authorization_code, client_id, expires) VALUES (?, ?, ?)';
         $pdo->prepare($sql)->execute(array('testcode', 'Some Client', date('Y-m-d H:i:s', strtotime('+1 hour'))));
 
-        $sql = 'INSERT INTO oauth_users (username, password, email, email_verified) VALUES (?, ?, ?, ?)';
+        $sql = 'INSERT INTO user_details (username, password, email, email_verified) VALUES (?, ?, ?, ?)';
         $pdo->prepare($sql)->execute(array('testuser', 'password', 'testuser@test.com', true));
 
         $sql = 'INSERT INTO oauth_public_keys (client_id, public_key, private_key, encryption_algorithm) VALUES (?, ?, ?, ?)';
@@ -420,7 +420,7 @@ class Bootstrap
             'client_id' => "Some Client"
         )));
 
-        $db->set('oauth_users-testuser',json_encode(array(
+        $db->set('user_details-testuser',json_encode(array(
             'username' => "testuser",
             'password' => "password"
         )));
@@ -459,7 +459,7 @@ class Bootstrap
             'client_id' => "Some Client"
         ));
 
-        $db->oauth_users->insert(array(
+        $db->user_details->insert(array(
             'username' => "testuser",
             'password' => "password"
         ));
@@ -540,7 +540,7 @@ class Bootstrap
                         'access_token_table' => $prefix.'oauth_access_tokens',
                         'refresh_token_table' => $prefix.'oauth_refresh_tokens',
                         'code_table' => $prefix.'oauth_authorization_codes',
-                        'user_table' => $prefix.'oauth_users',
+                        'user_table' => $prefix.'user_details',
                         'jwt_table'  => $prefix.'oauth_jwt',
                         'scope_table'  => $prefix.'oauth_scopes',
                         'public_key_table'  => $prefix.'oauth_public_keys',
@@ -585,7 +585,7 @@ class Bootstrap
 
     private function deleteDynamoDb(\Aws\DynamoDb\DynamoDbClient $client, $prefix = null, $waitForDeletion = false)
     {
-        $tablesList = explode(' ', 'oauth_access_tokens oauth_authorization_codes oauth_clients oauth_jwt oauth_public_keys oauth_refresh_tokens oauth_scopes oauth_users');
+        $tablesList = explode(' ', 'oauth_access_tokens oauth_authorization_codes oauth_clients oauth_jwt oauth_public_keys oauth_refresh_tokens oauth_scopes user_details');
         $nbTables  = count($tablesList);
 
         // Delete all table.
@@ -628,7 +628,7 @@ class Bootstrap
 
     private function createDynamoDb(\Aws\DynamoDb\DynamoDbClient $client, $prefix = null)
     {
-        $tablesList = explode(' ', 'oauth_access_tokens oauth_authorization_codes oauth_clients oauth_jwt oauth_public_keys oauth_refresh_tokens oauth_scopes oauth_users');
+        $tablesList = explode(' ', 'oauth_access_tokens oauth_authorization_codes oauth_clients oauth_jwt oauth_public_keys oauth_refresh_tokens oauth_scopes user_details');
         $nbTables  = count($tablesList);
         $client->createTable(array(
             'TableName' => $prefix.'oauth_access_tokens',
@@ -707,7 +707,7 @@ class Bootstrap
         ));
 
         $client->createTable(array(
-            'TableName' => $prefix.'oauth_users',
+            'TableName' => $prefix.'user_details',
             'AttributeDefinitions' => array(array('AttributeName' => 'username','AttributeType' => 'S')),
             'KeySchema' => array(array('AttributeName' => 'username','KeyType' => 'HASH')),
             'ProvisionedThroughput' => array('ReadCapacityUnits'  => 1,'WriteCapacityUnits' => 1)
@@ -813,7 +813,7 @@ class Bootstrap
         ));
 
         $client->putItem(array(
-            'TableName' => $prefix.'oauth_users',
+            'TableName' => $prefix.'user_details',
             'Item' => array(
                 'username' => array('S' => 'testuser'),
                 'password' => array('S' => 'password'),

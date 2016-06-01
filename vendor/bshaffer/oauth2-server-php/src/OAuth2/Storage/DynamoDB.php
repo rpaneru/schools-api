@@ -27,7 +27,7 @@ use OAuth2\OpenID\Storage\AuthorizationCodeInterface as OpenIDAuthorizationCodeI
  *  - oauth_public_keys (primary hash key : client_id)
  *  - oauth_refresh_tokens (primary hash key : refresh_token)
  *  - oauth_scopes (primary hash key : scope, secondary index : is_default-index hash key is_default)
- *  - oauth_users (primary hash key : username)
+ *  - user_details (primary hash key : username)
  *
  * @author Frederic AUGUSTE <frederic.auguste at gmail dot com>
  */
@@ -69,7 +69,7 @@ class DynamoDB implements
             'access_token_table' => 'oauth_access_tokens',
             'refresh_token_table' => 'oauth_refresh_tokens',
             'code_table' => 'oauth_authorization_codes',
-            'user_table' => 'oauth_users',
+            'user_table' => 'user_details',
             'jwt_table'  => 'oauth_jwt',
             'scope_table'  => 'oauth_scopes',
             'public_key_table'  => 'oauth_public_keys',

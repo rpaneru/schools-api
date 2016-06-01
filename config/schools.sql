@@ -211,10 +211,10 @@ CREATE TABLE IF NOT EXISTS `oauth_scopes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oauth_users`
+-- Table structure for table `user_details`
 --
 
-CREATE TABLE IF NOT EXISTS `oauth_users` (
+CREATE TABLE IF NOT EXISTS `user_details` (
   `username` varchar(255) NOT NULL,
   `password` varchar(2000) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
@@ -222,10 +222,10 @@ CREATE TABLE IF NOT EXISTS `oauth_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `oauth_users`
+-- Dumping data for table `user_details`
 --
 
-INSERT INTO `oauth_users` (`username`, `password`, `first_name`, `last_name`) VALUES
+INSERT INTO `user_details` (`username`, `password`, `first_name`, `last_name`) VALUES
 ('testuser', '$2y$10$OJH6acEs4TtPNR/Yj0flnu5PUahp/15eub8fXyylNjFmN2CepoLu.', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -368,9 +368,9 @@ ALTER TABLE `oauth_refresh_tokens`
   ADD PRIMARY KEY (`refresh_token`);
 
 --
--- Indexes for table `oauth_users`
+-- Indexes for table `user_details`
 --
-ALTER TABLE `oauth_users`
+ALTER TABLE `user_details`
   ADD PRIMARY KEY (`username`);
 
 --

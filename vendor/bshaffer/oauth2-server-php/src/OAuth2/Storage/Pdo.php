@@ -62,7 +62,7 @@ class Pdo implements
             'access_token_table' => 'oauth_access_tokens',
             'refresh_token_table' => 'oauth_refresh_tokens',
             'code_table' => 'oauth_authorization_codes',
-            'user_table' => 'oauth_users',
+            'user_table' => 'user_details',
             'jwt_table'  => 'oauth_jwt',
             'jti_table'  => 'oauth_jti',
             'scope_table'  => 'oauth_scopes',
@@ -222,10 +222,15 @@ class Pdo implements
     /* OAuth2\Storage\UserCredentialsInterface */
     public function checkUserCredentials($username, $password)
     {
-        if ($user = $this->getUser($username)) {
-            return $this->checkPassword($user, $password);
+        if ($user = $this->getUser($username)) 
+        {
+            if( $user['password'] == md5($password) )
+            {
+               return true;
+            } 
+            return false;
+            //return $this->checkPassword($user, $password);
         }
-
         return false;
     }
 
@@ -307,12 +312,12 @@ class Pdo implements
     // plaintext passwords are bad!  Override this for your application
     protected function checkPassword($user, $password)
     {
-        return $user['password'] == sha1($password);
+        return $user['password'] == md5($password);
     }
 
     public function getUser($username)
     {
-        $stmt = $this->db->prepare($sql = sprintf('SELECT * from %s where username=:username', $this->config['user_table']));
+        $stmt = $this->db->prepare($sql = sprintf('SELECT * from %s where userId =:username', $this->config['user_table']));
         $stmt->execute(array('username' => $username));
 
         if (!$userInfo = $stmt->fetch(\PDO::FETCH_ASSOC)) {

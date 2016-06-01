@@ -47,7 +47,7 @@ class Redis implements AuthorizationCodeInterface,
             'access_token_key' => 'oauth_access_tokens:',
             'refresh_token_key' => 'oauth_refresh_tokens:',
             'code_key' => 'oauth_authorization_codes:',
-            'user_key' => 'oauth_users:',
+            'user_key' => 'user_details:',
             'jwt_key' => 'oauth_jwt:',
             'scope_key' => 'oauth_scopes:',
         ), $config);

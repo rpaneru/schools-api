@@ -25,7 +25,7 @@ CREATE TABLE oauth_refresh_tokens (
     scope VARCHAR(2000),
     CONSTRAINT refresh_token_pk PRIMARY KEY (refresh_token)
 );
-CREATE TABLE oauth_users (
+CREATE TABLE user_details (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(2000),
     first_name VARCHAR(255),

@@ -25,14 +25,14 @@ CREATE TABLE oauth_refresh_tokens (
     scope VARCHAR(2000),
     CONSTRAINT refresh_token_pk PRIMARY KEY (refresh_token)
 );
-CREATE TABLE oauth_users (
+CREATE TABLE user_details (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(2000),
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     CONSTRAINT username_pk PRIMARY KEY (username)
 );
-INSERT INTO "oauth_users" VALUES('oauth_test_user','$2y$14$f3qml4G2hG6sxM26VMq.geDYbsS089IBtVJ7DlD05BoViS9PFykE2','test','user');
+INSERT INTO "user_details" VALUES('oauth_test_user','$2y$14$f3qml4G2hG6sxM26VMq.geDYbsS089IBtVJ7DlD05BoViS9PFykE2','test','user');
 CREATE TABLE oauth_jwt (
     client_id VARCHAR(80) NOT NULL,
     subject VARCHAR(80),
