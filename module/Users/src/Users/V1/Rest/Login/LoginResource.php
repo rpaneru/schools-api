@@ -7,12 +7,12 @@ use ZF\Rest\AbstractResourceListener;
 class LoginResource extends AbstractResourceListener
 {
     protected $adapter;
-    protected $loginMapper;
+    protected $userDetailsMapper;
     
-    public function __construct($adapter,$loginMapper)
+    public function __construct($adapter,$userDetailsMapper)
     {
         $this->adapter = $adapter;
-        $this->loginMapper = $loginMapper;
+        $this->userDetailsMapper = $userDetailsMapper;
     }
     
     public function fetch($param)
@@ -23,7 +23,7 @@ class LoginResource extends AbstractResourceListener
         if( json_last_error() == JSON_ERROR_NONE )
         {
             
-            $paramsSupportedArray = array("userId","password","profileTypeId","hash");
+            $paramsSupportedArray = array("userId","password","hash");
 
             ////////////////////////////////////////////////////////////////////////////////////
             $secObj = new \Security( );
@@ -48,8 +48,8 @@ class LoginResource extends AbstractResourceListener
                 return new ApiProblem(201, 'Hash not matched.');
             }
             ////////////////////////////////////////////////////////////////////////////////////
-
-            $userDetails = $this->loginMapper->fetchOne( $paramObject );
+            unset($paramObject->hash);
+            $userDetails = $this->userDetailsMapper->fetchOne( $paramObject );
             
             if($userDetails->verified == 'No')
             {

@@ -6,8 +6,8 @@ class LoginResourceFactory
     public function __invoke($services)
     {
         $adapter = $services->get('Zend\Db\Adapter\Adapter');
-        $loginMapper = $services->get('Users\V1\Rest\Login\LoginMapper'); 
+        $userDetailsMapper = $services->get('Users\V1\Rest\Login\UserDetailsMapper'); 
         
-        return new LoginResource($adapter,$loginMapper);
+        return new LoginResource($adapter,$userDetailsMapper);
     }
 }

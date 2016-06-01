@@ -28,9 +28,9 @@ class Module implements ApigilityProviderInterface
     {
       return array(
             'factories' => array(
-                'Users\V1\Rest\Login\LoginMapper' =>  function ($sm) {
+                'Users\V1\Rest\Login\UserDetailsMapper' =>  function ($sm) {
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new \Users\V1\Rest\Login\LoginMapper($adapter);
+                    return new \Users\V1\Rest\Login\UserDetailsMapper($adapter);
                 }
             )
         );
