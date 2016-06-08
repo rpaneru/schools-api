@@ -8,11 +8,13 @@ class LoginResource extends AbstractResourceListener
 {
     protected $adapter;
     protected $userDetailsMapper;
+    protected $oauthAccessTokensMapper;
     
-    public function __construct($adapter,$userDetailsMapper)
+    public function __construct($adapter,$userDetailsMapper,$oauthAccessTokensMapper)
     {
         $this->adapter = $adapter;
         $this->userDetailsMapper = $userDetailsMapper;
+        $this->oauthAccessTokensMapper = $oauthAccessTokensMapper;
     }
     
     public function fetch($param)
@@ -49,8 +51,24 @@ class LoginResource extends AbstractResourceListener
             }
             ////////////////////////////////////////////////////////////////////////////////////
             unset($paramObject->hash);
-            $userDetails = $this->userDetailsMapper->fetchOne( $paramObject );
             
+            $authData = $this->getIdentity()->getAuthenticationIdentity();
+            $accessToken = $authData['access_token'];   
+
+            $userId = $this->oauthAccessTokensMapper->getUserIdByAccessToken( $accessToken );
+            
+            if($userId != $paramObject->userId)
+            {
+                return new ApiProblem(201, "Invalid userid entered");
+            }
+            
+            $userDetails = $this->userDetailsMapper->fetchOne( array('userId'=>$userId) );
+            
+            if($userDetails->password != $paramObject->password)
+            {
+                return new ApiProblem(201, "Invalid password entered");
+            }
+
             if($userDetails->verified == 'No')
             {
                 return new ApiProblem(201, "User's mobile number is not verified.");

@@ -37,7 +37,7 @@ class UserDetailsResource extends AbstractResourceListener
         $authData = $this->getIdentity()->getAuthenticationIdentity();
         $accessToken = $authData['access_token'];
         
-        $userId = $this->oauthAccessTokensMapper->fetchOne( $accessToken );
+        $userId = $this->oauthAccessTokensMapper->getUserIdByAccessToken( $accessToken );
         
         $userDetails = $this->userDetailsMapper->fetchOne( array('userId'=>$userId) );
 

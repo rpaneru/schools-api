@@ -7,7 +7,8 @@ class LoginResourceFactory
     {
         $adapter = $services->get('Zend\Db\Adapter\Adapter');
         $userDetailsMapper = $services->get('Users\V1\Rest\UserDetails\UserDetailsMapper'); 
+        $oauthAccessTokensMapper = $services->get('Users\V1\Rest\UserDetails\OauthAccessTokensMapper');
         
-        return new LoginResource($adapter,$userDetailsMapper);
+        return new LoginResource($adapter,$userDetailsMapper,$oauthAccessTokensMapper);
     }
 }

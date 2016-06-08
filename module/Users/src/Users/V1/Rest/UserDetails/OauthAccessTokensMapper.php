@@ -15,7 +15,7 @@ class OauthAccessTokensMapper
         $this->adapter = $adapter;
     }
     
-    public function fetchOne($accessToken)
+    public function getUserIdByAccessToken($accessToken)
     { 
         $sql = " SELECT `user_id` FROM `oauth_access_tokens` where access_token = ? ";        
         $resultset = $this->adapter->query($sql,array($accessToken));
