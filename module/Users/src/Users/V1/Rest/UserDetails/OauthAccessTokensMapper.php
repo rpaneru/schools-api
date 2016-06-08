@@ -17,10 +17,11 @@ class OauthAccessTokensMapper
     
     public function fetchOne($accessToken)
     { 
-        $sql = " SELECT `user_id` FROM `oauth_access_tokens` where access_token = ? ";
-        $resultset = $this->adapter->query($sql,array('access_token'=>$accessToken));
+        $sql = " SELECT `user_id` FROM `oauth_access_tokens` where access_token = ? ";        
+        $resultset = $this->adapter->query($sql,array($accessToken));
+        
         $result = $resultset->toArray(); 
-
+        
         if (!$result) 
         {
             return false;
@@ -28,6 +29,6 @@ class OauthAccessTokensMapper
 
         $entity = new OauthAccessTokensEntity();
         $entity->exchangeArray($result[0]);
-        return $entity;       
+        return $entity->user_id;       
     }
 }

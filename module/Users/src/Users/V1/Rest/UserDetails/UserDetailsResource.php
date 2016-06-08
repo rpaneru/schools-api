@@ -39,9 +39,7 @@ class UserDetailsResource extends AbstractResourceListener
         
         $userId = $this->oauthAccessTokensMapper->fetchOne( $accessToken );
         
-        var_dump($userId);die;
-        
-        $userDetails = $this->userDetailsMapper->fetchOne( $userId );
+        $userDetails = $this->userDetailsMapper->fetchOne( array('userId'=>$userId) );
 
         /*$mail = new \Email();                                   
         $mail->From = 'rpaneru1986@gmail.com';
