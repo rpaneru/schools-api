@@ -150,6 +150,22 @@ return array(
                     'DELETE' => false,
                 ),
             ),
+            'Users\\V1\\Rest\\UserDetails\\Controller' => array(
+                'collection' => array(
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+                'entity' => array(
+                    'GET' => true,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+            ),
         ),
     ),
 );
