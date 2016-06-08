@@ -4,7 +4,7 @@ return array(
         'driver' => 'Pdo',
         'dsn' => 'mysql:dbname=schools;host=localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'rajesh',
         'adapters' => array(
             'schools_adapter' => array(),
         ),

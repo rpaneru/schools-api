@@ -31,6 +31,10 @@ class Module implements ApigilityProviderInterface
                 'Users\V1\Rest\UserDetails\UserDetailsMapper' =>  function ($sm) {
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new \Users\V1\Rest\UserDetails\UserDetailsMapper($adapter);
+                },
+                'Users\V1\Rest\UserDetails\OauthAccessTokensMapper' =>  function ($sm) {
+                    $adapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new \Users\V1\Rest\UserDetails\OauthAccessTokensMapper($adapter);
                 }
             )
         );
