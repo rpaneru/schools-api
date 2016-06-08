@@ -7,4 +7,11 @@ return array(
             ),
         ),
     ),
+    'Users\\V1\\Rest\\UserDetails\\Controller' => array(
+        'entity' => array(
+            'GET' => array(
+                'description' => '{"userId":"rpaneru","hash":"44311a46bd020195bf141074c1a7002e"}',
+            ),
+        ),
+    ),
 );
