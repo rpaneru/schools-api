@@ -1,7 +1,7 @@
 <?php // @codingStandardsIgnoreFile
 /*ini_set("display_errors", "1");
 error_reporting(E_ALL);*/
-//error_reporting(1);
+error_reporting(1);
 
 
  date_default_timezone_set('Asia/Kolkata'); 
