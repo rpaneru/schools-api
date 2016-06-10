@@ -5,6 +5,7 @@ return array(
             'Users\\V1\\Rest\\Login\\LoginResource' => 'Users\\V1\\Rest\\Login\\LoginResourceFactory',
             'Users\\V1\\Rest\\UserDetails\\UserDetailsResource' => 'Users\\V1\\Rest\\UserDetails\\UserDetailsResourceFactory',
             'Users\\V1\\Rest\\Permission\\PermissionResource' => 'Users\\V1\\Rest\\Permission\\PermissionResourceFactory',
+            'Users\\V1\\Rest\\Role\\RoleResource' => 'Users\\V1\\Rest\\Role\\RoleResourceFactory',
         ),
     ),
     'router' => array(
@@ -36,6 +37,15 @@ return array(
                     ),
                 ),
             ),
+            'users.rest.role' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/role[/:role_id]',
+                    'defaults' => array(
+                        'controller' => 'Users\\V1\\Rest\\Role\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
@@ -43,6 +53,7 @@ return array(
             0 => 'users.rest.login',
             1 => 'users.rest.user-details',
             2 => 'users.rest.permission',
+            3 => 'users.rest.role',
         ),
     ),
     'zf-rest' => array(
@@ -94,12 +105,31 @@ return array(
             'collection_class' => 'Users\\V1\\Rest\\Permission\\PermissionCollection',
             'service_name' => 'Permission',
         ),
+        'Users\\V1\\Rest\\Role\\Controller' => array(
+            'listener' => 'Users\\V1\\Rest\\Role\\RoleResource',
+            'route_name' => 'users.rest.role',
+            'route_identifier_name' => 'role_id',
+            'collection_name' => 'role',
+            'entity_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'Users\\V1\\Rest\\Role\\RoleEntity',
+            'collection_class' => 'Users\\V1\\Rest\\Role\\RoleCollection',
+            'service_name' => 'Role',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
             'Users\\V1\\Rest\\Login\\Controller' => 'HalJson',
             'Users\\V1\\Rest\\UserDetails\\Controller' => 'HalJson',
             'Users\\V1\\Rest\\Permission\\Controller' => 'HalJson',
+            'Users\\V1\\Rest\\Role\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
             'Users\\V1\\Rest\\Login\\Controller' => array(
@@ -117,6 +147,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'Users\\V1\\Rest\\Role\\Controller' => array(
+                0 => 'application/vnd.users.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content_type_whitelist' => array(
             'Users\\V1\\Rest\\Login\\Controller' => array(
@@ -128,6 +163,10 @@ return array(
                 1 => 'application/json',
             ),
             'Users\\V1\\Rest\\Permission\\Controller' => array(
+                0 => 'application/vnd.users.v1+json',
+                1 => 'application/json',
+            ),
+            'Users\\V1\\Rest\\Role\\Controller' => array(
                 0 => 'application/vnd.users.v1+json',
                 1 => 'application/json',
             ),
@@ -169,6 +208,18 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'users.rest.permission',
                 'route_identifier_name' => 'userId',
+                'is_collection' => true,
+            ),
+            'Users\\V1\\Rest\\Role\\RoleEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'users.rest.role',
+                'route_identifier_name' => 'role_id',
+                'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
+            ),
+            'Users\\V1\\Rest\\Role\\RoleCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'users.rest.role',
+                'route_identifier_name' => 'role_id',
                 'is_collection' => true,
             ),
         ),
@@ -218,6 +269,22 @@ return array(
             'Users\\V1\\Rest\\Permission\\Controller' => array(
                 'collection' => array(
                     'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+                'entity' => array(
+                    'GET' => true,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+            ),
+            'Users\\V1\\Rest\\Role\\Controller' => array(
+                'collection' => array(
+                    'GET' => true,
                     'POST' => false,
                     'PUT' => false,
                     'PATCH' => false,

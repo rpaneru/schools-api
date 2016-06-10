@@ -1,7 +1,7 @@
 <?php
-namespace Profiles\V1\Rest\ProfileType;
+namespace Users\V1\Rest\Role;
 
-class ProfileTypeEntity
+class RoleEntity
 {
     public $profileTypeId;
     public $profileType;

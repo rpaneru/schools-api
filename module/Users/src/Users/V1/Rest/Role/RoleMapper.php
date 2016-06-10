@@ -1,12 +1,12 @@
 <?php
-namespace Profiles\V1\Rest\ProfileType;
+namespace Users\V1\Rest\Role;
  
 use Zend\Db\Sql\Select;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\Db\TableGateway\TableGateway;
  
-class ProfileTypeMapper
+class RoleMapper
 {
     protected $adapter;
     
