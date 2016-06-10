@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2016 at 04:22 AM
+-- Generation Time: Jun 10, 2016 at 04:09 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -84,7 +84,9 @@ CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
 
 INSERT INTO `oauth_access_tokens` (`access_token`, `client_id`, `user_id`, `expires`, `scope`) VALUES
 ('07e271a5779f55fa813d052a333191cab846bf36', 'testclient', 'rpaneru', '2016-06-08 18:51:01', NULL),
+('0f31345662c5963340c24033abc9b1bec4bc4dfe', 'testclient', 'rpaneru', '2016-06-09 18:06:29', NULL),
 ('196238a5fbf608b2e2b7060b9e454c39b456b654', 'testclient', 'rpaneru', '2016-06-08 18:45:19', NULL),
+('2570560e498364a8bb902b0f5586fbf6dd0a5e12', 'testclient', 'rpaneru', '2016-06-09 17:36:31', NULL),
 ('25d1d93969b0609a8c25b6f20ec5cbcc97bf0da1', 'testclient', 'rpaneru', '2016-06-08 18:26:32', NULL),
 ('296f67f93699492da60c08df772d2aa9019c9003', 'testclient', 'rpaneru', '2016-06-08 18:34:41', NULL),
 ('666feadd52704fab6a859a0c53996ec152f9f5c0', 'testclient', 'rpaneru', '2016-06-08 18:42:46', NULL),
@@ -93,11 +95,14 @@ INSERT INTO `oauth_access_tokens` (`access_token`, `client_id`, `user_id`, `expi
 ('71c32203492ad79ea9cbb2fde7b5aceb7b7fcdc7', 'testclient', 'rpaneru', '2016-06-08 18:46:17', NULL),
 ('737f63849c313c32246e65b66df1f8ea19ebbb15', 'testclient', 'rpaneru', '2016-06-08 18:22:30', NULL),
 ('75efd42845372653fd549af6b2f4db1efb35f65f', 'testclient', 'rpaneru', '2016-06-08 17:53:08', NULL),
+('8127414680d44fc5953b7a061db68bce1721539e', 'testclient', 'rpaneru', '2016-06-09 19:20:06', NULL),
+('91006b493f6c43b6fd227eadf16575260c83a5dc', 'testclient', 'rpaneru', '2016-06-09 18:17:05', NULL),
 ('94d8319ffc8d1760da9044e3bb4f377879279ad7', 'testclient', 'rpaneru', '2016-06-08 18:01:53', NULL),
 ('a54363b2fe77a82b039f2e3be256fde76fa1600c', 'testclient', 'rpaneru', '2016-06-08 17:55:31', NULL),
 ('ba0bdc6798e0477ea5b749547801084c8491da8e', 'testclient', 'rpaneru', '2016-06-08 18:26:42', NULL),
 ('c661294b356fee926a633b9eee2385b3b7c2be0b', 'testclient', 'rpaneru', '2016-06-08 18:02:14', NULL),
-('cb8d88983d88c6a3be5b3fabee1d72dc8c7889fc', 'testclient', 'rpaneru', '2016-06-08 18:52:47', NULL);
+('cb8d88983d88c6a3be5b3fabee1d72dc8c7889fc', 'testclient', 'rpaneru', '2016-06-08 18:52:47', NULL),
+('cd9e55fe82e73e48dcee2c30c7401a61d80c04c2', 'testclient', 'rpaneru', '2016-06-09 17:58:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -168,7 +173,9 @@ CREATE TABLE IF NOT EXISTS `oauth_refresh_tokens` (
 --
 
 INSERT INTO `oauth_refresh_tokens` (`refresh_token`, `client_id`, `user_id`, `expires`, `scope`) VALUES
+('3156fca58544aebf8e60f476c6a9dc02042c965b', 'testclient', 'rpaneru', '2016-06-23 17:06:29', NULL),
 ('37467409f802644340a01eb6a28e05d21ccb18b4', 'testclient', 'rpaneru', '2016-06-22 17:02:15', NULL),
+('409ef211fe27f9c4cca95b4ce20077a999c101f1', 'testclient', 'rpaneru', '2016-06-23 17:17:05', NULL),
 ('4cb3bee28dfd4c1f45ccc4c44e169acd3431b742', 'testclient', 'rpaneru', '2016-06-22 17:26:42', NULL),
 ('58fc30e3baa7b1549019acc8e851e57c27c10754', 'testclient', 'rpaneru', '2016-06-22 17:22:30', NULL),
 ('694b549ae260b0ce67c4539563d0ed19aabf9483', 'testclient', 'rpaneru', '2016-06-22 17:26:32', NULL),
@@ -177,10 +184,13 @@ INSERT INTO `oauth_refresh_tokens` (`refresh_token`, `client_id`, `user_id`, `ex
 ('8f5ccd482a36ea57396086a40b27df4bb441f3e1', 'testclient', 'rpaneru', '2016-06-22 17:51:01', NULL),
 ('93ff7224fcb058dddb607242b4c3fcb9cdc75e66', 'testclient', 'rpaneru', '2016-06-22 17:45:20', NULL),
 ('9bc89b2350527116a011e61ecf0aef0e583e2cc0', 'testclient', 'rpaneru', '2016-06-22 17:34:41', NULL),
+('a6328c5e7c75a3747001236241075718aa3cbc66', 'testclient', 'rpaneru', '2016-06-23 16:36:31', NULL),
 ('b93092de82190420c2547f3d876dcf7f67961b86', 'testclient', 'rpaneru', '2016-06-22 17:53:26', NULL),
 ('bd9cc1fd3d9de5d2fbd9cfd66a24e84286d42693', 'testclient', 'rpaneru', '2016-06-22 17:46:17', NULL),
 ('be247adfadca56e886fa4f52ec027e99e7590172', 'testclient', 'rpaneru', '2016-06-22 17:52:47', NULL),
 ('bfdf8ab7635502f0be55fce988ae31f3ec0baebc', 'testclient', 'rpaneru', '2016-06-22 17:26:22', NULL),
+('c97c2e813f7dcce28203981df34a856178071b8c', 'testclient', 'rpaneru', '2016-06-23 18:20:06', NULL),
+('d8c6e38d913883d9b72b5bcb0d660c92602ccb79', 'testclient', 'rpaneru', '2016-06-23 16:58:33', NULL),
 ('f565e1cdc81239e52b44334456eb5067d1a9d65a', 'testclient', 'rpaneru', '2016-06-22 17:01:53', NULL),
 ('f621d1731a6a41c9412ec7ed040a81d0b025c06c', 'testclient', 'rpaneru', '2016-06-22 16:55:31', NULL);
 
@@ -258,7 +268,14 @@ CREATE TABLE IF NOT EXISTS `role_permission` (
   `rolePermissionId` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `menuId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_permission`
+--
+
+INSERT INTO `role_permission` (`rolePermissionId`, `roleId`, `menuId`) VALUES
+(1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -306,7 +323,6 @@ CREATE TABLE IF NOT EXISTS `user_addresses` (
 
 CREATE TABLE IF NOT EXISTS `user_details` (
   `id` int(11) NOT NULL,
-  `roleId` int(11) NOT NULL,
   `userId` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -332,8 +348,8 @@ CREATE TABLE IF NOT EXISTS `user_details` (
 -- Dumping data for table `user_details`
 --
 
-INSERT INTO `user_details` (`id`, `roleId`, `userId`, `password`, `name`, `fatherName`, `motherName`, `gender`, `dob`, `maritalStatus`, `primaryEmail`, `primaryMobile`, `primaryProfilePic`, `religion`, `category`, `nationality`, `verified`, `status`, `sessionId`, `createdBy`, `createdDateTime`) VALUES
-(1, 1, 'rpaneru', 'cc03e747a6afbbcbf8be7668acfebee5', 'Rajesh Paneru', 'Tara Chandra Paneru', 'Devki Paneru', 'Male', '1986-06-03', 'Married', 'rpaneru1986@gmail.com', 2147483647, '', 'Hinduism', 'General (Gn)', 'Indian', 'Yes', 'Active', '', '', '2016-06-08 02:07:14');
+INSERT INTO `user_details` (`id`, `userId`, `password`, `name`, `fatherName`, `motherName`, `gender`, `dob`, `maritalStatus`, `primaryEmail`, `primaryMobile`, `primaryProfilePic`, `religion`, `category`, `nationality`, `verified`, `status`, `sessionId`, `createdBy`, `createdDateTime`) VALUES
+(1, 'rpaneru', 'cc03e747a6afbbcbf8be7668acfebee5', 'Rajesh Paneru', 'Tara Chandra Paneru', 'Devki Paneru', 'Male', '1986-06-03', 'Married', 'rpaneru1986@gmail.com', 2147483647, '', 'Hinduism', 'General (Gn)', 'Indian', 'Yes', 'Active', '', '', '2016-06-08 02:07:14');
 
 -- --------------------------------------------------------
 
@@ -345,7 +361,14 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `userRoleId` int(11) NOT NULL,
   `userId` varchar(10) NOT NULL,
   `roleId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`userRoleId`, `userId`, `roleId`) VALUES
+(1, 'rpaneru', 2);
 
 --
 -- Indexes for dumped tables
@@ -463,7 +486,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `role_permission`
 --
 ALTER TABLE `role_permission`
-  MODIFY `rolePermissionId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rolePermissionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sms_log`
 --
@@ -483,7 +506,7 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `userRoleId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userRoleId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -4,7 +4,6 @@ namespace Users\V1\Rest\UserDetails;
 class UserDetailsEntity
 {
     public $id;
-    public $profileTypeId;
     public $userId;
     public $password;
     public $name;
@@ -29,7 +28,6 @@ class UserDetailsEntity
     {
         return array( 
             'id' => $this->id,
-            'profileTypeId' => $this->profileTypeId,
             'userId' => $this->userId,
             'password' => $this->password,
             'name' => $this->name,
@@ -55,7 +53,6 @@ class UserDetailsEntity
     public function exchangeArray(array $array)
     {   
         $this->id = $array['id'];
-        $this->profileTypeId = $array['profileTypeId'];
         $this->userId = $array['userId'];   
         $this->password = $array['password'];
         $this->name = $array['name'];
