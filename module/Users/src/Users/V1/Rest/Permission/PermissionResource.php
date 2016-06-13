@@ -17,7 +17,7 @@ class PermissionResource extends AbstractResourceListener
     
     public function fetch($userId)
     {
-        $permission = $this->permissionMapper->fetchOne($userId);
+        $permission = $this->permissionMapper->fetchOne(array('userId'=>$userId));
         return $permission;
     }
     

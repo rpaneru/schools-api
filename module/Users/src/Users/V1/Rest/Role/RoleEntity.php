@@ -3,9 +3,9 @@ namespace Users\V1\Rest\Role;
 
 class RoleEntity
 {
-    public $profileTypeId;
-    public $profileType;
-    public $parentProfileTypeId;
+    public $roleId;
+    public $role;
+    public $parentRoleId;
     public $status;
     public $sessionId;
     public $createdBy;
@@ -14,9 +14,9 @@ class RoleEntity
     public function getArrayCopy()
     {
         return array( 
-            'profileTypeId' => $this->profileTypeId,
-            'profileType' => $this->profileType,
-            'parentProfileTypeId' => $this->parentProfileTypeId,            
+            'roleId' => $this->roleId,
+            'role' => $this->role,
+            'parentRoleId' => $this->parentRoleId,            
             'status' => $this->status,
             'sessionId' => $this->sessionId,
             'createdBy' => $this->createdBy,
@@ -26,9 +26,9 @@ class RoleEntity
  
     public function exchangeArray(array $array)
     {   
-        $this->profileTypeId = $array['profileTypeId'];
-        $this->profileType = $array['profileType'];   
-        $this->parentProfileTypeId = $array['parentProfileTypeId'];        
+        $this->roleId = $array['roleId'];
+        $this->role = $array['role'];   
+        $this->parentRoleId = $array['parentRoleId'];        
         $this->status = $array['status'];
         $this->sessionId = $array['sessionId'];
         $this->createdBy = $array['createdBy'];        

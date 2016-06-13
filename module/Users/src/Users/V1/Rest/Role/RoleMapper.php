@@ -17,16 +17,16 @@ class RoleMapper
     
     public function fetchAll($params)
     {
-        $select = new Select('profile_types');
+        $select = new Select('role');
         $paginatorAdapter = new DbSelect($select, $this->adapter);
-        $collection = new ProfileTypeCollection($paginatorAdapter);
+        $collection = new RoleCollection($paginatorAdapter);
         return $collection;
     }
     
     public function fetchOne($data)
     { 
-        $sql = " SELECT * FROM ` profile_types` where profileTypeId = ? ";
-        $resultset = $this->adapter->query($sql, array($data->profileTypeId));
+        $sql = " SELECT * FROM `role` where `roleId` = ? ";
+        $resultset = $this->adapter->query($sql, array($data['roleId']));
         $result = $resultset->toArray();
         
         if (!$result) 
@@ -34,8 +34,22 @@ class RoleMapper
             return false;
         }
 
-        $entity = new ProfileTypeEntity();
+        $entity = new RoleEntity();
         $entity->exchangeArray($result[0]);
         return $entity;       
+    }
+    
+    public function getRoleIdByUserId($data)
+    { 
+        $sql = " SELECT group_concat(`roleId`) as `roleId` FROM `user_role` where `userId` = ? ";
+        $resultset = $this->adapter->query($sql, array($data['userId']));
+        $result = $resultset->toArray();
+        
+        if (!$result) 
+        {
+            return false;
+        }
+        
+        return $result[0]["roleId"];      
     }
 }

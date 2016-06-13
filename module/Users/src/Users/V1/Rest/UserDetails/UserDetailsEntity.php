@@ -2,7 +2,7 @@
 namespace Users\V1\Rest\UserDetails;
 
 class UserDetailsEntity
-{
+{    
     public $id;
     public $userId;
     public $password;
@@ -23,6 +23,7 @@ class UserDetailsEntity
     public $sessionId;
     public $createdBy;
     public $createdDateTime;
+    public $roleId;
 
     public function getArrayCopy()
     {
@@ -46,7 +47,8 @@ class UserDetailsEntity
             'status' => $this->status,
             'sessionId' => $this->sessionId,
             'createdBy' => $this->createdBy,
-            'createdDateTime' => $this->createdDateTime            
+            'createdDateTime' => $this->createdDateTime,
+            'roleId' => $this->roleId 
         );
     }
  
@@ -72,5 +74,6 @@ class UserDetailsEntity
         $this->sessionId = $array['sessionId'];
         $this->createdBy = $array['createdBy'];        
         $this->createdDateTime = $array['createdDateTime'];
+        $this->roleId = $array['roleId'];        
     }
 }

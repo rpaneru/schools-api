@@ -40,7 +40,7 @@ return array(
             'users.rest.role' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/role[/:role_id]',
+                    'route' => '/role[/:roleId]',
                     'defaults' => array(
                         'controller' => 'Users\\V1\\Rest\\Role\\Controller',
                     ),
@@ -108,7 +108,7 @@ return array(
         'Users\\V1\\Rest\\Role\\Controller' => array(
             'listener' => 'Users\\V1\\Rest\\Role\\RoleResource',
             'route_name' => 'users.rest.role',
-            'route_identifier_name' => 'role_id',
+            'route_identifier_name' => 'roleId',
             'collection_name' => 'role',
             'entity_http_methods' => array(
                 0 => 'GET',
@@ -211,15 +211,15 @@ return array(
                 'is_collection' => true,
             ),
             'Users\\V1\\Rest\\Role\\RoleEntity' => array(
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'roleId',
                 'route_name' => 'users.rest.role',
-                'route_identifier_name' => 'role_id',
+                'route_identifier_name' => 'roleId',
                 'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
             ),
             'Users\\V1\\Rest\\Role\\RoleCollection' => array(
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'roleId',
                 'route_name' => 'users.rest.role',
-                'route_identifier_name' => 'role_id',
+                'route_identifier_name' => 'roleId',
                 'is_collection' => true,
             ),
         ),

@@ -7,8 +7,9 @@ class UserDetailsResourceFactory
     {
         $adapter = $services->get('Zend\Db\Adapter\Adapter');
         $userDetailsMapper = $services->get('Users\V1\Rest\UserDetails\UserDetailsMapper');
-        $oauthAccessTokensMapper = $services->get('Users\V1\Rest\UserDetails\OauthAccessTokensMapper');
+        $roleMapper = $services->get('Users\V1\Rest\Role\RoleMapper');
+        $oauthAccessTokensMapper = $services->get('Users\V1\Rest\UserDetails\OauthAccessTokensMapper');        
         
-        return new UserDetailsResource($adapter,$userDetailsMapper,$oauthAccessTokensMapper);
+        return new UserDetailsResource($adapter,$userDetailsMapper,$roleMapper,$oauthAccessTokensMapper);
     }
 }

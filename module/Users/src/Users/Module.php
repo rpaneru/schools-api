@@ -39,6 +39,10 @@ class Module implements ApigilityProviderInterface
                 'Users\V1\Rest\Permission\PermissionMapper' =>  function ($sm) {
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new \Users\V1\Rest\Permission\PermissionMapper($adapter);
+                },
+                'Users\V1\Rest\Role\RoleMapper' =>  function ($sm) {
+                    $adapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new \Users\V1\Rest\Role\RoleMapper($adapter);
                 }
             )
         );

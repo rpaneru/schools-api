@@ -8,12 +8,14 @@ class UserDetailsResource extends AbstractResourceListener
 {
     protected $adapter;
     protected $userDetailsMapper;
+    protected $roleMapper;
     protected $oauthAccessTokensMapper;
     
-    public function __construct($adapter,$userDetailsMapper,$oauthAccessTokensMapper)
+    public function __construct($adapter,$userDetailsMapper,$roleMapper,$oauthAccessTokensMapper)
     {
         $this->adapter = $adapter;
         $this->userDetailsMapper = $userDetailsMapper;
+        $this->roleMapper = $roleMapper;
         $this->oauthAccessTokensMapper = $oauthAccessTokensMapper;
     }
 
@@ -40,7 +42,12 @@ class UserDetailsResource extends AbstractResourceListener
         $userId = $this->oauthAccessTokensMapper->getUserIdByAccessToken( $accessToken );
         
         $userDetails = $this->userDetailsMapper->fetchOne( array('userId'=>$userId) );
-
+        
+        $roleDetails = $this->roleMapper->getRoleIdByUserId( array('userId'=>$userId) );
+        
+        $userDetails->roleId = $roleDetails;
+        
+        
         /*$mail = new \Email();                                   
         $mail->From = 'rpaneru1986@gmail.com';
         $mail->FromName = 'SRTechnologies';
